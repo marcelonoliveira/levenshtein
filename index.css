@@ -98,6 +98,16 @@ input[type=text], textarea, input[type=range], #resultsField {
     border-color: #ddd;
 }
 
+#resultsField * {
+    color: #777;
+    line-height: inherit;
+}
+
+#resultsField .match-sequence {
+    font-weight: bold;
+    color: #29916e;
+}
+
 textarea {
     resize: none;
 }

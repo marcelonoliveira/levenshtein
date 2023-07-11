@@ -7,14 +7,6 @@ $(function() {
         .on('change', parameterChange);
 });
 
-function formatMatches(matches) {
-    return matches.map(match => $('<span>').text(match.target));
-}
-
-function noMatchText(source) {
-    return $('<span>').text(source ? `No matches found for the input '${source}'` : 'Please, type some source string.');
-}
-
 function parameterChange(event) {
     const source = $('#sourceField').val();
     const treshold = parseFloat($('#tresholdField').val());
@@ -22,7 +14,6 @@ function parameterChange(event) {
     const deletionCost = parseFloat($('#deletionCostField').val());
     const insertionCost = parseFloat($('#insertionCostField').val());
     let matches = [];
-
     $('#targetField')
         .val()
         .split('\n')
@@ -33,7 +24,24 @@ function parameterChange(event) {
                 matches.push(distance.matches);
         });
 
-    $('#resultsField').empty().append(matches.length > 0 ? formatMatches(matches) : noMatchText(source));
+    $('#resultsField')
+        .empty()
+        .append(matches.length > 0 ? formatMatches(matches) : noMatchText(source));;
+}
+
+function formatMatches(matches) {
+    return matches.map(match => {
+        const formattedSequences = match.sequences.map(sequence => {
+            return $('<span>')
+                .text(sequence.text)
+                .toggleClass('match-sequence', sequence.match);
+        });
+        return $('<div>').append(formattedSequences);
+    });
+}
+
+function noMatchText(source) {
+    return $('<span>').text(source ? `No matches found for the input '${source}'` : 'Please, type some source string.');
 }
 
 function reset() {
