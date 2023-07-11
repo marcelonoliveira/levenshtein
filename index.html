@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Levenshtein distance example</title>
+	<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+	<script type="module" src="src/levenshtein.js"></script>
+	<script type="module" src="index.js"></script>
+	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<aside>
+		<h1>Levenshtein distance</h1>
+	</aside>
+	<main>
+		<table>
+			<tr>
+				<td></td>
+				<td>
+					<h3>Parameters</h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Source string</label>
+				</td>
+				<td>
+					<input id="sourceField" class="paramaterField" type="text">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Treshold</label>
+				</td>
+				<td>
+					<input id="tresholdField" class="paramaterField" type="range" min="0" max="10" value="3" step="1" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Substitution cost</label>
+				</td>
+				<td>
+					<input id="substitutionCostField" class="paramaterField" type="range" min="0" max="10" value="1" step="0.5" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Deletion cost</label>
+				</td>
+				<td>
+					<input id="deletionCostField" class="paramaterField" type="range" min="0" max="10" value="1" step="0.5" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Insertion cost</label>
+				</td>
+				<td>
+					<input id="insertionCostField" class="paramaterField" type="range" min="0" max="10" value="1" step="0.5" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Target strings</label>
+				</td>
+				<td>
+					<textarea id="targetField" class="paramaterField" cols="30" rows="5"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<h3>Result</h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Matches</label>
+				</td>
+				<td>
+					<div id="resultsField"></div>
+				</td>
+			</tr>
+		</table>
+	</main>
+</body>
+</html>

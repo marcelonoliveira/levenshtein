@@ -1,2 +1,3 @@
-# levenshtein
-JavaScript implementation of the Levenshtein distance algorithm
+# Levenshtein distance
+
+JavaScript implementation of the Levenshtein distance algorithm.
