@@ -93,6 +93,10 @@ input[type=text], textarea, input[type=range], #resultsField {
     border-radius: var(--field-border-radius);
 }
 
+#resultsField {
+    border-color: #ddd;
+}
+
 textarea {
     resize: none;
 }
