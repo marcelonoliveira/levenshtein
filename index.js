@@ -2,9 +2,7 @@ import { LevenshteinDistance } from './src/levenshtein.js';
 
 $(function() {
     reset();
-    $('.paramaterField')
-        .on('keyup', parameterChange)
-        .on('change', parameterChange);
+    $('.paramaterField').on('input', parameterChange);
 });
 
 function parameterChange(event) {
