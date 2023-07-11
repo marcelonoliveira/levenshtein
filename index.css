@@ -143,6 +143,41 @@ input[type="range"]::-webkit-slider-thumb {
     height: calc(var(--font-size) * var(--line-height) * .75);
 }
 
+.append {
+    position: relative;
+}
+
+.append input {
+    padding-right: calc(2em + (var(--font-size) * 1.6));
+}
+
+.append input:focus {
+    padding-right: calc(2em + (var(--font-size) * 1.6) - 1px);
+}
+
+.append input:focus + span {
+    height: calc(100% - (var(--field-border-width) * 4));
+    top: calc(var(--field-border-width) * 2);
+    right: calc(var(--field-border-width) * 2);
+    width: calc((var(--font-size) * 2.8) - var(--field-border-width));
+}
+
+.append span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: var(--field-border-width);
+    right: var(--field-border-width);
+    width: calc(var(--font-size) * 2.8);
+    height: calc(100% - (var(--field-border-width) * 2));
+    line-height: calc(100% - (var(--field-border-width) * 2));
+    text-align: center;
+    background-color: #eee;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
 @media screen and (min-width: 1280px) {
 
     aside {

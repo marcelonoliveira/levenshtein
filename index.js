@@ -1,8 +1,9 @@
 import { LevenshteinDistance } from './src/levenshtein.js';
 
 $(function() {
-    reset();
     $('.paramaterField').on('input', parameterChange);
+    $('.paramaterField[type=range]').on('input', updateValue);
+    reset();
 });
 
 function parameterChange(event) {
@@ -25,6 +26,10 @@ function parameterChange(event) {
     $('#resultsField')
         .empty()
         .append(matches.length > 0 ? formatMatches(matches) : noMatchText(source));;
+}
+
+function updateValue() {
+    $(this).siblings('span').text($(this).val());
 }
 
 function formatMatches(matches) {
@@ -57,4 +62,5 @@ function reset() {
     ].join('\n');
     $('#targetField').val(targetDefaults);
     $('#resultsField').append(noMatchText(''));
+    $('.paramaterField[type=range]').trigger('input');
 }
