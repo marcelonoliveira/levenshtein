@@ -18,88 +18,72 @@
 		<h1>Levenshtein distance</h1>
 	</aside>
 	<main>
-		<table>
-			<tr>
-				<td></td>
-				<td>
-					<h3>Parameters</h3>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label for="sourceField">Source string</label>
-				</td>
-				<td>
-					<input id="sourceField" class="paramaterField" type="text">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label for="tresholdField">Treshold</label>
-				</td>
-				<td>
-					<div class="append">
-						<input id="tresholdField" class="paramaterField" type="range" min="0" max="10" value="3" step="1" />
-						<span></span>
+		<section>
+			<h3>Parameters</h3>
+			<div>
+
+				<div class="row">
+					<div class="col col-lg-x6">
+						<label for="sourceField">Source string</label>
+						<input id="sourceField" class="paramaterField" type="text">
 					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
+					<div class="col col-lg-x6">
+						<label for="tresholdField">Treshold</label>
+						<div class="append">
+							<input id="tresholdField" class="paramaterField" type="range" min="0" max="10" value="3" step="1" />
+							<span></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-lg-x6">
+					<label for="targetField">Target strings</label>
+					<textarea id="targetField" class="paramaterField" cols="30" rows="6"></textarea>
+				</div>
+				<div class="col col-lg-x6">
 					<label for="substitutionCostField">Substitution cost</label>
-				</td>
-				<td>
 					<div class="append">
 						<input id="substitutionCostField" class="paramaterField" type="range" min="0" max="10" value="1" step="0.5" />
 						<span></span>
 					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
+
 					<label for="deletionCostField">Deletion cost</label>
-				</td>
-				<td>
 					<div class="append">
 						<input id="deletionCostField" class="paramaterField" type="range" min="0" max="10" value="1" step="0.5" />
 						<span></span>
 					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
+
 					<label for="insertionCostField">Insertion cost</label>
-				</td>
-				<td>
 					<div class="append">
 						<input id="insertionCostField" class="paramaterField" type="range" min="0" max="10" value="1" step="0.5" />
 						<span></span>
 					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label for="targetField">Target strings</label>
-				</td>
-				<td>
-					<textarea id="targetField" class="paramaterField" cols="30" rows="5"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>
-					<h3>Result</h3>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label>Matches</label>
-				</td>
-				<td>
-					<div id="resultsField"></div>
-				</td>
-			</tr>
-		</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-x6">
+					<div class="row">
+						<div class="col col-x6">
+							<label for="targetField">Remove accents</label>
+							<input type="checkbox">
+						</div>
+						<div class="col col-x6">
+							<label for="targetField">Case-sensitive</label>
+							<input type="checkbox">
+						</div>
+					</div>
+				</div>
+				<div class="col col-x6 right">
+					<label>&nbsp;</label>
+					<button>Reset</button>
+				</div>
+			</div>
+		</section>
+		<section>
+			<h3 class="mb-4">Matches</h3>
+			<div id="resultsField"></div>
+		</section>
 	</main>
 </body>
 </html>

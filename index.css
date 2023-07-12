@@ -1,6 +1,5 @@
 :root {
     --aside-width: 40em;
-    --container-padding: 1em;
     --font-size: 16px;
     --line-height: 1.5;
     --field-border-width: 1px;
@@ -15,7 +14,7 @@ html{
     height: 100%;
 }
 
-* {
+*, ::before, ::after {
     box-sizing: border-box;
     font: 400 var(--font-size)/var(--line-height) 'Open Sans', sans-serif;
     color: #555;
@@ -30,7 +29,7 @@ body {
 }
 
 main, aside {
-    padding: var(--container-padding);
+    padding: 1.5em 2em;
 }
 
 aside {
@@ -41,44 +40,80 @@ aside {
     background-color: aquamarine;
 }
 
+section:first-child {
+    margin-top: 1em;
+}
+
+section {
+    margin-top: 3em;
+}
+
+.mb-4 {
+    margin-bottom: 1em;
+}
+
 h1 {
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 3em;
-    font-weight: thin;
-    margin: 0 0 0.8em 0.2em;
+    font-weight: 300;
+    margin: 0 0 0.8em;
 }
 
 h3 {
     text-transform: uppercase;
     font-size: 2em;
-    font-weight: bold;
-    margin: 0.3em 0 0;
+    font-weight: 400;
+    margin: 0 0 0.3em;
 }
 
-table {
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -1em;
+}
+
+.col {
+    padding: 0 1em;
     width: 100%;
-    max-width: 50em;
-    margin: 0 auto;
 }
 
-td {
-    vertical-align: top;
-    padding: 1em;
+.col.col-x6 {
+    width: 50%;
 }
 
-td:first-child {
+.right {
     text-align: right;
-    width: 0;
 }
 
-input, label, textarea, #resultsField {
+input, label, textarea, #resultsField, button {
     border: var(--field-border-width) solid;
     display: inline-block;
     line-height: calc(var(--font-size) * var(--line-height) * 1.5);
-    padding: calc(var(--font-size) * 0.2) calc(var(--font-size) * 0.8);
     vertical-align: middle;
     margin: 0;
+}
+
+input, label, textarea, #resultsField {
+    transition-property: none;
+    padding: 0.2rem 0.8rem;
     width: 100%;
+}
+
+button {
+    padding: 0.2rem 1.6rem;
+    border-color: transparent;
+    transition-property: background-color, box-shadow;
+    background-color: #c4eee0;
+    box-shadow: 0 0.2rem 0.2rem -0.1rem #00000055;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+button:hover {
+    background-color: #acddcd;
+    box-shadow: 0 0.2rem 0.4rem 0 #00000055;
 }
 
 label {
@@ -87,11 +122,16 @@ label {
     text-transform: uppercase;
     font-size: 0.8em;
     white-space: nowrap;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-input[type=text], textarea, input[type=range], #resultsField {
-    border-color: var(--field-border-color);
+input[type=text], textarea, input[type=range], input[type=checkbox], #resultsField, button {
     border-radius: var(--field-border-radius);
+}
+
+input[type=text], textarea, input[type=range], input[type=checkbox], #resultsField {
+    border-color: var(--field-border-color);
 }
 
 #resultsField {
@@ -116,17 +156,17 @@ input[type=text]:focus, textarea:focus, input[type=range]:focus {
     outline: none;
     border-width: 2px;
     border-color: var(--field-border-color-focus);
-    padding: calc((var(--font-size) * 0.2) - 1px) calc((var(--font-size) * 0.8) - 1px);
+    padding: calc(0.2rem - 1px) calc(0.8rem - 1px);
 }
 
 input[type=range] {
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
-    height: calc((var(--font-size) * 0.4) + (var(--font-size) * var(--line-height) * 1.5) + (var(--field-border-width) * 2));
+    height: calc(0.4rem + (var(--font-size) * var(--line-height) * 1.5) + (var(--field-border-width) * 2));
 }
 
-input[type="range"]::-moz-range-thumb {
+input[type=range]::-moz-range-thumb {
     border: none;
     border-radius: var(--field-border-radius);
     background-color: var(--field-range-thumb-color);
@@ -134,13 +174,37 @@ input[type="range"]::-moz-range-thumb {
     height: 50%;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     border-radius: var(--field-border-radius);
     background-color: var(--field-range-thumb-color);
     width: 2rem;
     height: calc(var(--font-size) * var(--line-height) * .75);
+}
+
+input[type=checkbox] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: calc((var(--font-size) * 0.4) + (var(--font-size) * var(--line-height) * 1.5) + (var(--field-border-width) * 2));
+    width: calc((var(--font-size) * 1.6) + 4rem + (var(--field-border-width) * 2));
+    display: flex;
+    align-items: center;
+}
+
+input[type=checkbox]::before {
+    content: "";
+    display: inline-block;
+    border-radius: var(--field-border-radius);
+    background-color: var(--field-range-thumb-color);
+    width: 2rem;
+    height: calc(var(--font-size) * var(--line-height) * .75);
+    transition-property: all;
+}
+
+input[type=checkbox]:checked::before {
+    transform: translateX(2rem);
+    background-color: #6dc9aa;
 }
 
 .append {
@@ -185,6 +249,10 @@ input[type="range"]::-webkit-slider-thumb {
     }
 
     main {
-        padding-left: calc(var(--aside-width) + var(--container-padding));
+        margin-left: var(--aside-width);
+    }
+
+    .col.col-lg-x6 {
+        width: 50%;
     }
 }
