@@ -11,13 +11,19 @@ export class LevenshteinDistance {
 	#distanceMatrix;
 	matches;
 
-	constructor(source, target, threshold = 3, substitutionCost = 1, deletionCost = 1, insertionCost = 1) {
+	constructor(source, target, threshold = 3, substitutionCost = 1, deletionCost = 1, insertionCost = 1, caseSensitive = false, removeAccents = true) {
 		this.#treshold = threshold;
 		this.#source = source;
 		this.#target = target;
 		this.#substitutionCost = substitutionCost;
 		this.#deletionCost = deletionCost;
 		this.#insertionCost = insertionCost;
+
+		if (!caseSensitive) {
+			this.#source = this.#source.toLowerCase();
+			this.#target = this.#target.toLowerCase();
+		}
+
 		this.matches = new Matches(target);
 		this.#getDistance();
 

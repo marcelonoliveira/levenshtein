@@ -13,20 +13,25 @@ function parameterChange(event) {
     const substitutionCost = parseFloat($('#substitutionCostField').val());
     const deletionCost = parseFloat($('#deletionCostField').val());
     const insertionCost = parseFloat($('#insertionCostField').val());
-    let matches = [];
-    $('#targetField')
+    const caseSensitive = $('#caseToggler').prop('checked');
+    const removeAccents = $('#accentsToggler').prop('checked');
+    const matches = $('#targetField')
         .val()
         .split('\n')
-        .forEach(target => {
-            const distance = new LevenshteinDistance(source, target, treshold, substitutionCost, deletionCost, insertionCost);
-
-            if (distance.matches.count)
-                matches.push(distance.matches);
-        });
-
+        .map(target => new LevenshteinDistance(
+                source,
+                target,
+                treshold,
+                substitutionCost,
+                deletionCost,
+                insertionCost,
+                caseSensitive,
+                removeAccents))
+        .filter(distance => distance.matches.count)
+        .map(distance => distance.matches);
     $('#resultsField')
         .empty()
-        .append(matches.length > 0 ? formatMatches(matches) : noMatchText(source));;
+        .append(matches.length > 0 ? formatMatches(matches) : noMatchText(source));
 }
 
 function updateValue() {
