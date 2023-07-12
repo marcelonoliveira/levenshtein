@@ -103,8 +103,8 @@ button {
     padding: 0.2rem 1.6rem;
     border-color: transparent;
     transition-property: background-color, box-shadow;
-    background-color: #c4eee0;
-    box-shadow: 0 0.2rem 0.2rem -0.1rem #00000055;
+    box-shadow: 0 0.2rem 0.2rem -0.2rem #00000055;
+    background-color: #bdf1e1;
     cursor: pointer;
     text-transform: uppercase;
     font-weight: 700;
@@ -112,8 +112,8 @@ button {
 }
 
 button:hover {
-    background-color: #acddcd;
-    box-shadow: 0 0.2rem 0.4rem 0 #00000055;
+    background-color: #9be2cb;
+    box-shadow: 0 0.2rem 0.2rem -0.1rem #00000055;
 }
 
 label {
