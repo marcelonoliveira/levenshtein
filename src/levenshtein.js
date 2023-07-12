@@ -11,7 +11,15 @@ export class LevenshteinDistance {
 	#distanceMatrix;
 	matches;
 
-	constructor(source, target, threshold = 3, substitutionCost = 1, deletionCost = 1, insertionCost = 1, caseSensitive = false, ignoreAccents = true) {
+	constructor(
+			source,
+			target,
+			threshold = 3,
+			substitutionCost = 1,
+			deletionCost = 1,
+			insertionCost = 1,
+			caseSensitive = false,
+			ignoreAccents = true) {
 		this.#treshold = threshold;
 		this.#source = source;
 		this.#target = target;
