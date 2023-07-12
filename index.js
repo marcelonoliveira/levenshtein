@@ -3,6 +3,7 @@ import { LevenshteinDistance } from './src/levenshtein.js';
 $(function() {
     $('.paramaterField').on('input', parameterChange);
     $('.paramaterField[type=range]').on('input', updateValue);
+    $('#resetButton').on('click', reset);
     reset();
 });
 
@@ -60,7 +61,14 @@ function reset() {
         'Mehmet Matthews',
         'Larry Barrett'
     ].join('\n');
+    $('#sourceField').val('');
+    $('#tresholdField').val(3);
+    $('#substitutionCostField').val(1);
+    $('#deletionCostField').val(1);
+    $('#insertionCostField').val(1);
     $('#targetField').val(targetDefaults);
     $('#resultsField').append(noMatchText(''));
+    $('#accentsToggler').prop('checked', true);
+    $('#caseToggler').prop('checked', false);
     $('.paramaterField[type=range]').trigger('input');
 }
