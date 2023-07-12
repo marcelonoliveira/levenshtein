@@ -56,13 +56,13 @@ function noMatchText(source) {
 function reset() {
     let targetDefaults = [
         'Aidan Bowen',
-        'Beth England',
-        'Luke Durham',
-        'Anish Shields',
-        'Brittney Mcgrath',
-        'Md Sheppard',
+        'Dorothea Schöttmer',
+        'Luke Jäger',
+        'Valquíria da Silva',
+        'Álvaro Mcgrath',
+        'Amâncio Sheppard',
         'Freyja Gordon',
-        'Oskar Nicholson',
+        'Dionísio Sonnen',
         'Mehmet Matthews',
         'Larry Barrett'
     ].join('\n');
