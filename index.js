@@ -14,7 +14,7 @@ function parameterChange(event) {
     const deletionCost = parseFloat($('#deletionCostField').val());
     const insertionCost = parseFloat($('#insertionCostField').val());
     const caseSensitive = $('#caseToggler').prop('checked');
-    const removeAccents = $('#accentsToggler').prop('checked');
+    const ignoreAccents = $('#accentsToggler').prop('checked');
     const matches = $('#targetField')
         .val()
         .split('\n')
@@ -26,7 +26,7 @@ function parameterChange(event) {
                 deletionCost,
                 insertionCost,
                 caseSensitive,
-                removeAccents))
+                ignoreAccents))
         .filter(distance => distance.matches.count)
         .map(distance => distance.matches);
     $('#resultsField')

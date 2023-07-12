@@ -11,7 +11,7 @@ export class LevenshteinDistance {
 	#distanceMatrix;
 	matches;
 
-	constructor(source, target, threshold = 3, substitutionCost = 1, deletionCost = 1, insertionCost = 1, caseSensitive = false, removeAccents = true) {
+	constructor(source, target, threshold = 3, substitutionCost = 1, deletionCost = 1, insertionCost = 1, caseSensitive = false, ignoreAccents = true) {
 		this.#treshold = threshold;
 		this.#source = source;
 		this.#target = target;
@@ -22,6 +22,11 @@ export class LevenshteinDistance {
 		if (!caseSensitive) {
 			this.#source = this.#source.toLowerCase();
 			this.#target = this.#target.toLowerCase();
+		}
+
+		if (ignoreAccents) {
+			this.#source = this.#source.normalize("NFD").replace(/\p{Diacritic}/gu, "");
+			this.#target = this.#target.normalize("NFD").replace(/\p{Diacritic}/gu, "");
 		}
 
 		this.matches = new Matches(target);
