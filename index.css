@@ -46,6 +46,7 @@ aside {
     background-color: var(--alternative-background);
     transition-property: transform;
     z-index: 1;
+    overflow-y: scroll;
 }
 
 aside.show {
@@ -68,18 +69,26 @@ header {
 }
 
 section:not(:first-child) {
-    margin-top: 3em;
+    margin-top: 2em;
 }
 
 .mb-4 {
     margin-bottom: 1em;
 }
 
+h1, h3, h4, h5, h6 {
+    margin: 0 0 0.3em;
+}
+
 h1, h3 {
     text-transform: uppercase;
-    font-size: 2em;
+    font-size: 2rem;
     font-weight: 400;
-    margin: 0 0 0.3em;
+}
+
+h1 + p {
+    font-size: 1.4rem;
+    font-weight: 300;
 }
 
 aside h1 {
@@ -87,12 +96,47 @@ aside h1 {
 }
 
 h2 {
-    font-size: 1.2em;
+    font-size: 1.2rem;
     text-transform: uppercase;
 }
 
 h3 {
     font-weight: 300;
+}
+
+h4 {
+    font-size: 1.4rem;
+    font-family: 'Source Code Pro', monospace;
+}
+
+h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Source Code Pro', monospace;
+}
+
+code {
+    font-family: 'Source Code Pro', monospace;
+}
+
+p {
+    margin: 0 0 0.2em;
+}
+
+dl *{
+    font-size: 0.9rem;
+}
+
+dt code {
+    font-size: 1.05rem;
+}
+
+dt:not(:first-child){
+    margin-top: 1em;
+}
+
+dd {
+    margin-left: 1.5em;
 }
 
 .row {
