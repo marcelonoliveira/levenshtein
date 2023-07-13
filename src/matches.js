@@ -1,6 +1,6 @@
 export class Matches {
 	#matches = [];
-	#matchCount = 0;
+	#matchCount = [];
 	#target;
 
 	constructor(target) {
@@ -10,12 +10,13 @@ export class Matches {
 	update(position) {
 		const beginOfSequence = !(this.#matches[0]) || (this.#matches[0] > position + 1);
 
-		if (beginOfSequence)
+		if (beginOfSequence) {
 			this.#matches.unshift(position, position);
-		else
+			this.#matchCount.unshift(1);
+		} else {
 			this.#matches[0] = position;
-
-		this.#matchCount++;
+			this.#matchCount[0]++;
+		}
 	}
 
     get sequences() {
@@ -40,7 +41,11 @@ export class Matches {
 	}
 
 	get count() {
-		return this.#matchCount;
+		return this.#matchCount.reduce((accumulator, currentValue) => currentValue + accumulator, 0);
+	}
+
+	get longestMatch() {
+		return this.#matchCount.reduce((accumulator, currentValue) => (currentValue > accumulator) ? currentValue : accumulator, 0);
 	}
 
 	get target() {
