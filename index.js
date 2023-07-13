@@ -4,6 +4,7 @@ $(function() {
     $('.paramaterField').on('input', parameterChange);
     $('.paramaterField[type=range]').on('input', updateValue);
     $('#resetButton').on('click', reset);
+    $('#asideToggler').on('click', toggleAside);
     reset();
 });
 
@@ -76,4 +77,8 @@ function reset() {
     $('#accentsToggler').prop('checked', true);
     $('#caseToggler').prop('checked', false);
     $('.paramaterField[type=range]').trigger('input');
+}
+
+function toggleAside() {
+    $('#asideToggler').children('span').text($('aside').toggleClass('show').hasClass('show') ? 'close' : 'menu');
 }
