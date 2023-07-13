@@ -69,7 +69,7 @@ export class LevenshteinDistance {
 			}
 		}
 
-		if (this.#distanceMatrix[rows][cols] > this.#treshold)
+		if ((this.#treshold >= 0) && (this.#distanceMatrix[rows][cols] > this.#treshold))
 			this.#distanceMatrix = undefined;
 	}
 
