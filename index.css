@@ -80,7 +80,7 @@ section:not(:first-child) {
 }
 
 h1, h3, h4, h5, h6 {
-    margin: 0 0 0.3em;
+    margin: 0 0 0.6rem;
 }
 
 h1, h3 {
@@ -114,12 +114,18 @@ h4 {
 
 h5 {
     font-size: 1.1rem;
-    font-weight: 700;
     font-family: 'Source Code Pro', monospace;
 }
 
 code {
     font-family: 'Source Code Pro', monospace;
+}
+
+p.code {
+    border-radius: var(--field-border-radius);
+    background-color: #00000011;
+    padding: 0.5em;
+    margin: 1em auto 0;
 }
 
 p {
@@ -138,7 +144,7 @@ dt:not(:first-child){
     margin-top: 1em;
 }
 
-dd {
+dd, .tab {
     margin-left: 1.5em;
 }
 

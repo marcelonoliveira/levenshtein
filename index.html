@@ -33,7 +33,7 @@
 				Just copy the contents of the <code>src</code> folder to your
 				project and reference the main JavaScript file in your HTML as below:
 			</p>
-			<p>
+			<p class="code">
 				<code>
 					&lt;script type="module" src="levenshtein.js"&gt;&lt;/script&gt;
 				</code>
@@ -41,112 +41,99 @@
 		</section>
 		<section>
 			<h3>Classes</h3>
-			<section>
-				<h4>LevenshteinDistance</h4>
-				<section>
-					<h5>constructor(source, target, ...)</h5>
-					<dl>
-						<dt>
-							<code>source</code>
-						</dt>
-						<dd>The string to be compared against <code>target</code>.</dd>
+			<h4>LevenshteinDistance</h4>
+			<h5>- constructor(source, target, ...)</h5>
+			<div class="tab">
+				<dl>
+					<dt>
+						<code>source</code>
+					</dt>
+					<dd>The string to be compared against <code>target</code>.</dd>
 
-						<dt>
-							<code>target</code>
-						</dt>
-						<dd>The string to be compared against <code>source</code>.</dd>
+					<dt>
+						<code>target</code>
+					</dt>
+					<dd>The string to be compared against <code>source</code>.</dd>
 
-						<dt>
-							<code>threshold</code> (default: 3)
-						</dt>
-						<dd>
-							<p>The maximum distance allowed or <code>-1</code> for no treshold.</p>
-							<p>
-								If the distance between <code>source</code> and <code>target</code> exeeds <code>treshold</code>,
-								no match will be returned.
-							</p>
-						</dd>
+					<dt>
+						<code>threshold</code> (default: 3)
+					</dt>
+					<dd>
+						<p>The maximum distance allowed or <code>-1</code> for no treshold.</p>
+						<p>
+							If the distance between <code>source</code> and <code>target</code> exeeds <code>treshold</code>,
+							no match will be returned.
+						</p>
+					</dd>
 
-						<dt>
-							<code>substitutionCost</code> (default: 1)
-						</dt>
-						<dd>The cost of replacing a character in <code>source</code> by one in <code>target</code>.</dd>
+					<dt>
+						<code>substitutionCost</code> (default: 1)
+					</dt>
+					<dd>The cost of replacing a character in <code>source</code> by one in <code>target</code>.</dd>
 
-						<dt>
-							<code>deletionCost</code> (default: 1)
-						</dt>
-						<dd>The cost of removing a character from <code>source</code>.</dd>
+					<dt>
+						<code>deletionCost</code> (default: 1)
+					</dt>
+					<dd>The cost of removing a character from <code>source</code>.</dd>
 
-						<dt>
-							<code>insertionCost</code> (default: 1)
-						</dt>
-						<dd>The cost of inserting a character into <code>source</code>.</dd>
+					<dt>
+						<code>insertionCost</code> (default: 1)
+					</dt>
+					<dd>The cost of inserting a character into <code>source</code>.</dd>
 
-						<dt>
-							<code>caseSensitive</code> (default: false)
-						</dt>
-						<dd>
-							<p>
-								If <code>true</code>, an uppercase character will be considered different of
-								the same character lowercased (e.g. A &ne; a).
-							</p>
-							<p>Otherwise, both will be considered equals (e.g. A = a).</p>
-						</dd>
+					<dt>
+						<code>caseSensitive</code> (default: false)
+					</dt>
+					<dd>
+						<p>
+							If <code>true</code>, an uppercase character will be considered different of
+							the same character lowercased (e.g. A &ne; a).
+						</p>
+						<p>Otherwise, both will be considered equals (e.g. A = a).</p>
+					</dd>
 
-						<dt>
-							<code>ignoreAccents</code> (default: true)
-						</dt>
-						<dd>
-							<p>
-								If <code>true</code>, an accented character will be considered equals to
-								the same character without accent (e.g. n = ñ).
-							</p>
-							<p>Otherwise, both will be considered different (e.g. n &ne; ñ).</p>
-						</dd>
-					</dl>
-				</section>
-				<section>
-					<h5>matches</h5>
-					<dl>
-						<dd>A <code>Matches</code> object, which encapsulates metadata about the matches found by the algorithm.</dd>
-					</dl>
-				</section>
+					<dt>
+						<code>ignoreAccents</code> (default: true)
+					</dt>
+					<dd>
+						<p>
+							If <code>true</code>, an accented character will be considered equals to
+							the same character without accent (e.g. n = ñ).
+						</p>
+						<p>Otherwise, both will be considered different (e.g. n &ne; ñ).</p>
+					</dd>
+				</dl>
+			</div>
+			<h5>- matches</h5>
+			<div class="tab">
+				A <code>Matches</code> object, which encapsulates metadata about the matches found by the algorithm.
+			</div>
 			</section>
 			<section>
 				<h4>Matches</h4>
-				<section>
-					<h5>count</h5>
-					<dl>
-						<dd>The amount of characters in the source matching the target.</dd>
-					</dl>
-				</section>
-				<section>
-					<h5>longestMatch</h5>
-					<dl>
-						<dd>The length in characters of the longest slice of the target matching the source.</dd>
-					</dl>
-				</section>
-				<section>
-					<h5>sequences</h5>
-					<dl>
-						<dd>
-							<p>
-								An array containing slices of the target string in the order they originally appeared.
-							</p>
-							<p>
-								Each slice is represented by an object in the form {text, match},
-								where <code>text</code> is the text of the slice and <code>macth</code>
-								is a boolean indicating whether that slice is a match or not.
-							</p>
-						</dd>
-					</dl>
-				</section>
-				<section>
-					<h5>target</h5>
-					<dl>
-						<dd>The original target string passed to the algorithm.</dd>
-					</dl>
-				</section>
+				<h5>- count</h5>
+				<div class="tab">
+					The amount of characters in the source matching the target.
+				</div>
+				<h5>- longestMatch</h5>
+				<div class="tab">
+					The length in characters of the longest slice of the target matching the source.</dd>
+				</div>
+				<h5>- sequences</h5>
+				<div class="tab">
+					<p>
+						An array containing slices of the target string in the order they originally appeared.
+					</p>
+					<p>
+						Each slice is represented by an object in the form {text, match},
+						where <code>text</code> is the text of the slice and <code>macth</code>
+						is a boolean indicating whether that slice is a match or not.
+					</p>
+				</div>
+				<h5>- target</h5>
+				<div class="tab">
+					The original target string passed to the algorithm.</dd>
+				</div>
 			</section>
 		</section>
 	</aside>
