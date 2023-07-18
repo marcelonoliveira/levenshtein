@@ -1,5 +1,3 @@
-import 'https://code.jquery.com/jquery-3.7.0.min.js';
-
 import { MOVE } from './move.js';
 import { Matches } from './matches.js';
 
