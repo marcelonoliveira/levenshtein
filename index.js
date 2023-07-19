@@ -21,15 +21,14 @@ function parameterChange(event) {
     const matches = $('#targetField')
         .val()
         .split('\n')
-        .map(target => new LevenshteinDistance(
-                source,
-                target,
-                treshold,
-                substitutionCost,
-                deletionCost,
-                insertionCost,
-                caseSensitive,
-                ignoreAccents))
+        .map(target => new LevenshteinDistance(source, target)
+                .withTreshold(treshold)
+                .withSubstitutionCost(substitutionCost)
+                .withDeletionCost(deletionCost)
+                .withInsertionCost(insertionCost)
+                .ignoringCase(!caseSensitive)
+                .ignoringAccents(ignoreAccents)
+                .calculate())
         .filter(distance => distance.matches.count)
         .map(distance => distance.matches);
     $('#resultsField')

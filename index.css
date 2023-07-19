@@ -132,7 +132,11 @@ p {
     margin: 0 0 0.2em;
 }
 
-dl *{
+dl, p.def {
+    margin: 1rem 0 1rem 1rem;
+}
+
+dl *, p.def, p.def * {
     font-size: 0.9rem;
 }
 
@@ -141,11 +145,11 @@ dt code {
 }
 
 dt:not(:first-child){
-    margin-top: 1em;
+    margin-top: 0.8em;
 }
 
-dd, .tab {
-    margin-left: 1.5em;
+dd {
+    margin-left: 1rem;
 }
 
 .row {

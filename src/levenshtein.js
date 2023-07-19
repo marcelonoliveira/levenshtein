@@ -1,6 +1,11 @@
 import { MOVE } from './move.js';
 import { Matches } from './matches.js';
 
+const DEFAULT_THRESHOLD = 3;
+const DEFAULT_SUBSTITUTION_COST = 1;
+const DEFAULT_DELETION_COST = 1;
+const DEFAULT_INSERTION_COST = 1;
+
 export class LevenshteinDistance {
 	#source;
 	#target;
@@ -9,39 +14,69 @@ export class LevenshteinDistance {
 	#deletionCost;
 	#insertionCost;
 	#distanceMatrix;
-	matches;
+	#matches;
 
-	constructor(
-			source,
-			target,
-			threshold = 3,
-			substitutionCost = 1,
-			deletionCost = 1,
-			insertionCost = 1,
-			caseSensitive = false,
-			ignoreAccents = true) {
-		this.#treshold = threshold;
+	constructor(source, target) {
 		this.#source = source;
 		this.#target = target;
-		this.#substitutionCost = substitutionCost;
-		this.#deletionCost = deletionCost;
-		this.#insertionCost = insertionCost;
+		this.#treshold = DEFAULT_THRESHOLD;
+		this.#substitutionCost = DEFAULT_SUBSTITUTION_COST;
+		this.#deletionCost = DEFAULT_DELETION_COST;
+		this.#insertionCost = DEFAULT_INSERTION_COST;
+		this.#matches = new Matches(target);
+	}
 
-		if (!caseSensitive) {
-			this.#source = this.#source.toLowerCase();
-			this.#target = this.#target.toLowerCase();
-		}
+	withTreshold(value = 3) {
+		this.#treshold = value;
+		return this;
+	}
 
-		if (ignoreAccents) {
+	withSubstitutionCost(cost = DEFAULT_SUBSTITUTION_COST) {
+		this.#substitutionCost = cost;
+		return this;
+	}
+
+	withDeletionCost(cost = DEFAULT_DELETION_COST) {
+		this.#deletionCost = cost;
+		return this;
+	}
+
+	withInsertionCost(cost = DEFAULT_INSERTION_COST) {
+		this.#insertionCost = cost;
+		return this;
+	}
+
+	ignoringAccents(ignore = true) {
+
+		if (ignore) {
 			this.#source = this.#source.normalize("NFD").replace(/\p{Diacritic}/gu, "");
 			this.#target = this.#target.normalize("NFD").replace(/\p{Diacritic}/gu, "");
 		}
 
-		this.matches = new Matches(target);
+		return this;
+	}
+
+	ignoringCase(ignore = true) {
+
+		if (ignore) {
+			this.#source = this.#source.toLowerCase();
+			this.#target = this.#target.toLowerCase();
+		}
+
+		return this;
+	}
+
+	calculate() {
 		this.#getDistance();
 
 		if (this.#distanceMatrix)
 			this.#reconstruct();
+
+		return this;
+	}
+
+	get matches() {
+		return this.#matches;
 	}
 
 	#getDistance() {
@@ -107,7 +142,7 @@ export class LevenshteinDistance {
 				result = (match ? this.#target.charAt(j - 1) : 'S') + result;
 
 				if (match)
-					this.matches.update(j - 1);
+					this.#matches.update(j - 1);
 
 				i--;
 				j--;
