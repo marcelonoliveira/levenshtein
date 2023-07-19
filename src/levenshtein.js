@@ -9,7 +9,7 @@ const DEFAULT_INSERTION_COST = 1;
 export class LevenshteinDistance {
 	#source;
 	#target;
-	#treshold;
+	#threshold;
 	#substitutionCost;
 	#deletionCost;
 	#insertionCost;
@@ -19,15 +19,15 @@ export class LevenshteinDistance {
 	constructor(source, target) {
 		this.#source = source;
 		this.#target = target;
-		this.#treshold = DEFAULT_THRESHOLD;
+		this.#threshold = DEFAULT_THRESHOLD;
 		this.#substitutionCost = DEFAULT_SUBSTITUTION_COST;
 		this.#deletionCost = DEFAULT_DELETION_COST;
 		this.#insertionCost = DEFAULT_INSERTION_COST;
 		this.#matches = new Matches(target);
 	}
 
-	withTreshold(value = 3) {
-		this.#treshold = value;
+	withThreshold(value = 3) {
+		this.#threshold = value;
 		return this;
 	}
 
@@ -104,7 +104,7 @@ export class LevenshteinDistance {
 			}
 		}
 
-		if ((this.#treshold >= 0) && (this.#distanceMatrix[rows][cols] > this.#treshold))
+		if ((this.#threshold >= 0) && (this.#distanceMatrix[rows][cols] > this.#threshold))
 			this.#distanceMatrix = undefined;
 	}
 

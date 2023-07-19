@@ -132,7 +132,7 @@
 				<dd>The cost of replacing a character in <code>source</code> by one in <code>target</code>.</dd>
 			</dl>
 
-			<h5>function withTreshold(value)</h5>
+			<h5>function withThreshold(value)</h5>
 			<p class="def">
 				Sets the maximum distance between <code>source</code> and <code>target</code> to be considered a match.
 				If not called before <code>calculate()</code>, the threshold is 3.
@@ -142,9 +142,9 @@
 					<code>value</code> (default: 3)
 				</dt>
 				<dd>
-					<p>The maximum distance allowed or <code>-1</code> for no treshold.</p>
+					<p>The maximum distance allowed or <code>-1</code> for no threshold.</p>
 					<p>
-						If the calculated distance exceeds <code>treshold</code>, no match is returned.
+						If the calculated distance exceeds <code>threshold</code>, no match is returned.
 					</p>
 				</dd>
 			</dl>
@@ -189,9 +189,9 @@
 						<input id="sourceField" class="paramaterField" type="text">
 					</div>
 					<div class="col col-lg-x6">
-						<label for="tresholdField">Treshold</label>
+						<label for="thresholdField">Threshold</label>
 						<div class="append">
-							<input id="tresholdField" class="paramaterField" type="range" min="-1" max="10" value="3" step="1" />
+							<input id="thresholdField" class="paramaterField" type="range" min="-1" max="10" value="3" step="1" />
 							<span></span>
 						</div>
 					</div>

@@ -12,7 +12,7 @@ $(function() {
 
 function parameterChange(event) {
     const source = $('#sourceField').val();
-    const treshold = parseFloat($('#tresholdField').val());
+    const threshold = parseFloat($('#thresholdField').val());
     const substitutionCost = parseFloat($('#substitutionCostField').val());
     const deletionCost = parseFloat($('#deletionCostField').val());
     const insertionCost = parseFloat($('#insertionCostField').val());
@@ -22,7 +22,7 @@ function parameterChange(event) {
         .val()
         .split('\n')
         .map(target => new LevenshteinDistance(source, target)
-                .withTreshold(treshold)
+                .withThreshold(threshold)
                 .withSubstitutionCost(substitutionCost)
                 .withDeletionCost(deletionCost)
                 .withInsertionCost(insertionCost)
@@ -69,7 +69,7 @@ function reset() {
         'Larry Barrett'
     ].join('\n');
     $('#sourceField').val('');
-    $('#tresholdField').val(3);
+    $('#thresholdField').val(3);
     $('#substitutionCostField').val(1);
     $('#deletionCostField').val(1);
     $('#insertionCostField').val(1);
